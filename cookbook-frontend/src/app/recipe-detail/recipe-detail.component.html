@@ -1,0 +1,33 @@
+<div *ngIf="recipe">
+  <h2>{{recipe.name | uppercase}} Details</h2>
+    <div>
+      <label for="recipe-name">Recipe name: </label>
+      <input id="recipe-name" [(ngModel)]="recipe.name" [innerText]="recipe.name">
+    </div>
+  <div>
+    <label for="recipe-description">Recipe description: </label>
+    <input id="recipe-description" [(ngModel)]="recipe.description" [innerText]="recipe.description">
+  </div>
+  <div><span>creation date: </span>{{recipe.dateCreated}}</div>
+  <button (click)="update()">Save changes</button>
+  <div *ngIf="recipe">
+    <h4> Versions history</h4>
+      <li *ngFor="let recipe of versions">
+        <span class="badge">{{recipe.dateCreated}}</span> {{recipe.name}}
+        <div><span>description: </span>{{recipe.description}}</div>
+      </li>
+  </div>
+  <div *ngIf="newRecipe">
+    <label>Add new child: </label>
+    <br>
+    <input id="new-recipe-name" [(ngModel)]="newRecipe.name" placeholder="name">
+    <input id="new-recipe-description" [(ngModel)]="newRecipe.description" placeholder="description">
+    <button (click)="addChild()">Add</button>
+  </div>
+
+  <div><a routerLink="/detail/{{recipe.parentId}}">
+    <span class="badge">Go to parent</span></a></div>
+  <button (click)="goBack()">go back</button>
+
+
+</div>

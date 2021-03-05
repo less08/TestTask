@@ -1,0 +1,16 @@
+version: "3"
+services:
+  backend:
+    container_name: cookbook-application
+    image: cookbook-application
+    build: cookbook-application/.
+    ports:
+      - "8080:8080"
+  frontend:
+    container_name: cookbook-application-ui
+    image: cookbook-application-ui
+    build: cookbook-frontend/.
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend

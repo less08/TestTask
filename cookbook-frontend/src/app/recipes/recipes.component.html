@@ -1,0 +1,17 @@
+<h2>My recipe</h2>
+<ul class="recipes">
+  <li *ngFor="let recipe of recipes">
+    <a routerLink="/detail/{{recipe.id}}">
+      <span class="badge">{{recipe.id}}</span> {{recipe.name}}
+    </a>
+  </li>
+</ul>
+
+<div *ngIf="newRecipe">
+  <label>Add new recipe: </label>
+  <br>
+  <input id="recipe-name" [(ngModel)]="newRecipe.name" placeholder="name">
+  <input id="recipe-description" [(ngModel)]="newRecipe.description" placeholder="description">
+  <button (click)="addRecipe()">Add</button>
+
+</div>
